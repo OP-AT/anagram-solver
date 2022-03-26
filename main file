@@ -1,0 +1,46 @@
+from math import factorial
+a= str(input("enter your string here: "))
+b= len(a)
+c= factorial(b)
+d= 1
+for i in range(0,len(a)):
+    for j in range(i+1,len(a)):
+        if a[i]== a[j]:
+            d+=1 
+    if d>1:
+        break
+    else:
+        pass
+e= factorial(d)
+f= c/int(e)
+print("there can be", f, "possible words made from", a)
+print("do you want to print all the posible words ??", end=" ")
+g= str(input(" "))
+
+if g== "y":
+    print("ok")
+    part = []
+    part.append(a[0])
+    for i in range(1,len(a)):
+        for j in reversed(range(len(part))):
+            y = part.pop(j)
+            for k in range(len(y)+1):
+                part.append(y[:k]+a[i]+y[k:])
+    t=[]
+    for i in range(0,len(part)):
+        if part.count(part[i])> 1:
+            t.append(part[i])
+            if part[i] in t:
+                while t.count(part[i])>1:
+                    t.remove(part[i])
+    #print(part,end = '')
+    for i in range(0,len(t)):
+        if part.count(t[i])>1:
+            while part.count(t[i])>1:
+                part.remove(t[i])
+    print(part)
+    print(len(part))
+elif g == "no":
+    print("good descision")
+    while 1>2:
+        break
